@@ -13,25 +13,34 @@ int main() {
 		cin >> x1 >> y1;
 		a = abs(x - x1);
 		b = abs(y - y1);
-		int i, j, k;
+		int i, j, k, s;
 		if (a < b)
-			i = b;
+		{
+			i = b; s = a;
+		}
+
 		else
-			i = a;
+		{
+			i = a; s = b;
+		}
 		//bool ex = false;
-		while(1){
+		if (x == x1 && y == y1)
+			cout << 0 << "\n";
+		else {
 			if (i % 2 == 0) {
 				j = i / 2;
 				if (j % a == 0)
 				{
 					//ex = true;
 					k = j;
-					break;
+
 				}
 				else
 				{
-					k = j + 1;
-					break;
+					int t = abs(j - s);
+					k = j + (t / 2)+1;
+
+
 				}
 			}
 			else {
@@ -40,16 +49,18 @@ int main() {
 				{
 					//ex = true;
 					k = j;
-					break;
+
 				}
 				else
 				{
-					k = j + 1;
-					break;
+					int t = abs(j - s);
+					k = j + (t / 2)-1;
+
 				}
 			}
+
+			cout << k << "\n";
 		}
-		cout << j << "\n";
 	}
 	return 0;
 }
