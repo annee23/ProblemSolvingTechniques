@@ -7,36 +7,36 @@ int main() {
 	std::ios::sync_with_stdio(false);
 	int T;
 	cin >> T;
-	string s;
-	string b;
-	
-	while (T--) {
-		vector<int>v;
-		vector<int>bb;
-		cin >> s >> b;
-		
+	string big;
+	string small;
 
-		for (int i = 0; i < s.size(); i++)
-			v.push_back(s[i]-'0');
-		for (int i = 0; i < b.size(); i++)
-			bb.push_back(b[i] - '0');
-		int times = s.size() - b.size();
-		int pointer = b.size();
+	while (T--) {
+		vector<int>a;
+		vector<int>b;
+		cin >> big >> small;
+
+		for (int i = 0; i < big.size(); i++)
+			a.push_back(big[i] - '0');
+		for (int i = 0; i < small.size(); i++)
+			b.push_back(small[i] - '0');
+
+		int times = big.size() - small.size();
+		int pointer = small.size();
 		int left = 0;
 		int A = 0, B = 0;
-		
-		for (int j = 0; j < b.size(); j++)
+
+		for (int j = 0; j < small.size(); j++)
 		{
-			A += v[j] * pow(10, b.size() - j - 1);
-			B += bb[j] * pow(10, b.size() - j - 1);
+			A += a[j] * pow(10, small.size() - j - 1);
+			B += b[j] * pow(10, small.size() - j - 1);
 
 		}
-		while(A>=B)
+		while (A >= B)
 			A = A - B;
 		left = A;
 		for (int i = 0; i < times; i++)
 		{
-			A = left * 10 + v[pointer];
+			A = left * 10 + a[pointer];
 			while (A >= B)
 				A = A - B;
 			left = A;
@@ -46,8 +46,6 @@ int main() {
 			cout << "1\n";
 		else
 			cout << "0\n";
-
-	
 	}
 	return 0;
 }
